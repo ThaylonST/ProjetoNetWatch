@@ -1,4 +1,4 @@
-// mobile/screens/HomeScreen.js
+// web/screens/HomeScreen.js
 import React, { useState, useEffect } from 'react';
 import { View, FlatList, RefreshControl, Modal, Text, TouchableOpacity } from 'react-native';
 import {
@@ -19,11 +19,11 @@ export default function HomeScreen({ navigation }) {
   const [scanned, setScanned] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
 
-  // Snackbar
+  
   const [snackVisible, setSnackVisible] = useState(false);
   const [snackMessage, setSnackMessage] = useState('');
 
-  // Modal de exclusão (funciona 100% no web)
+  
   const [modalVisible, setModalVisible] = useState(false);
   const [deviceToDelete, setDeviceToDelete] = useState(null);
 
@@ -69,22 +69,22 @@ export default function HomeScreen({ navigation }) {
     if (!deviceToDelete) return;
 
     try {
-      // Primeiro fecha o modal (evita tela branca)
+      
       setModalVisible(false);
 
-      // Depois faz a exclusão
+     
       await axios.post(`${API_URL}/devices/${deviceToDelete.id}/delete`);
       
-      // Atualiza a lista
+     
       await loadDevices();
 
-      // Mostra sucesso
+     
       showSnack('Dispositivo excluído com sucesso!');
     } catch (e) {
       console.log("Erro ao excluir:", e);
       showSnack('Erro ao excluir dispositivo', true);
     } finally {
-      // Garante que limpa mesmo se der erro
+     
       setDeviceToDelete(null);
     }
   };
@@ -168,7 +168,7 @@ export default function HomeScreen({ navigation }) {
         onPress={() => navigation.navigate('AddDevice')}
       />
 
-      {/* MODAL DE EXCLUSÃO (FUNCIONA 100% NO WEB) */}
+      {}
       <Modal visible={modalVisible} transparent animationType="fade">
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0,0,0,0.5)' }}>
           <View style={{ backgroundColor: '#fff', padding: 20, borderRadius: 12, width: '80%', maxWidth: 400 }}>
