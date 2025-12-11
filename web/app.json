@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "NetWatch",
+    "slug": "netwatch",
+    "version": "1.0.0",
+    "android": {
+      "usesCleartextTraffic": true,
+      "package": "com.anonymous.netwatch"
+    }
+  }
+}
